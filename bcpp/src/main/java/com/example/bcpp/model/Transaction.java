@@ -4,6 +4,7 @@ import com.example.bcpp.model.enums.MerchantCategory;
 import com.example.bcpp.model.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -13,6 +14,7 @@ import java.util.Date;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Builder
 @Table(name = "`transaction`")
 public class Transaction {
 
