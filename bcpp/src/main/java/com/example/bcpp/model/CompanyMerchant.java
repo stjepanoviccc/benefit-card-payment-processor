@@ -11,20 +11,19 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "`card`")
-public class Card {
+@Table(name = "`company_merchant`")
+public class CompanyMerchant {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-    @Column(name="card_number", nullable = false)
-    private String cardNumber;
+    @ManyToOne
+    @JoinColumn(name = "merchant_id")
+    private Merchant merchant;
 
-    @Column(name="total_amount", nullable = false)
-    private Double totalAmount;
 }

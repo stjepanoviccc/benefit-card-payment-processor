@@ -12,24 +12,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "`discount`")
-public class Discount {
+@Table(name = "`company_category`")
+public class CompanyCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "company_id")
-    private Long companyId;
+    @ManyToOne
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-    @Column(name = "merchant_id")
-    private Long merchantId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "merchant_category")
+    @JoinColumn(name = "category_name")
     private MerchantCategory merchantCategory;
-
-    @Column(name= "discount_percentage")
-    private Double discountPercentage;
 
 }

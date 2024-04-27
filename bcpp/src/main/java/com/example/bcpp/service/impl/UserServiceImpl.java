@@ -1,9 +1,7 @@
 package com.example.bcpp.service.impl;
 
-import com.example.bcpp.dto.CompanyDTO;
 import com.example.bcpp.dto.UserDTO;
 import com.example.bcpp.exception.BadRequestException;
-import com.example.bcpp.model.Company;
 import com.example.bcpp.model.User;
 import com.example.bcpp.repository.UserRepository;
 import com.example.bcpp.service.CardService;

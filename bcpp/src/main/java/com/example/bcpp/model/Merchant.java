@@ -7,6 +7,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,4 +28,9 @@ public class Merchant {
     @Column(nullable = false)
     private MerchantCategory category;
 
+    @Column(nullable = false)
+    private Double price;
+
+    @OneToMany(mappedBy = "merchant")
+    private List<CompanyMerchant> companyMerchants;
 }
