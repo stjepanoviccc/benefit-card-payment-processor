@@ -27,7 +27,9 @@ public class SecurityConfiguration {
         http
                 .csrf(AbstractHttpConfigurer::disable)
                 .authorizeHttpRequests(authorizeRequests -> authorizeRequests
-                        .requestMatchers("*").permitAll()
+                        // im allowing company and user creation here (with user creation they will get their cards automatically)
+                        .requestMatchers("/api/v1/companies/**").permitAll()
+                        .requestMatchers("/api/v1/login").permitAll()
                         .anyRequest().permitAll()
                 )
                 .sessionManagement(session -> session.sessionCreationPolicy(SessionCreationPolicy.STATELESS))

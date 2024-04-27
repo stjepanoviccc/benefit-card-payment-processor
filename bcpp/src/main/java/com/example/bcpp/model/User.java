@@ -1,7 +1,11 @@
 package com.example.bcpp.model;
+
 import com.example.bcpp.model.enums.UserType;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -40,7 +44,11 @@ public class User implements UserDetails, Serializable {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return List.of(new SimpleGrantedAuthority("ROLE_USER"));
+        String rolePrefix = "ROLE_";
+        String roleName = role.toString();
+        String roleNameWithPrefix = rolePrefix + roleName;
+
+        return List.of(new SimpleGrantedAuthority(roleNameWithPrefix));
     }
 
     @Override
