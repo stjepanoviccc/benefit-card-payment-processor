@@ -5,7 +5,6 @@ import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Card;
 import com.example.bcpp.model.User;
-import com.example.bcpp.model.enums.CardUpdateStatus;
 import com.example.bcpp.repository.CardRepository;
 import com.example.bcpp.service.CardService;
 import com.example.bcpp.utils.GenerateCardNumber;

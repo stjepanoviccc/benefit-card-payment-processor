@@ -3,16 +3,13 @@ package com.example.bcpp.dto;
 import com.example.bcpp.model.Merchant;
 import com.example.bcpp.model.Transaction;
 import com.example.bcpp.model.User;
-import com.example.bcpp.model.enums.MerchantCategory;
 import com.example.bcpp.model.enums.TransactionStatus;
-import jakarta.validation.constraints.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor

@@ -1,8 +1,12 @@
 package com.example.bcpp.dto;
 
-import com.example.bcpp.model.*;
+import com.example.bcpp.model.CompanyMerchant;
+import com.example.bcpp.model.Discount;
 import jakarta.validation.constraints.NotNull;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Data
 @NoArgsConstructor

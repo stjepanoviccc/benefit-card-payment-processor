@@ -6,7 +6,6 @@ import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Company;
-import com.example.bcpp.model.CompanyCategory;
 import com.example.bcpp.model.CompanyMerchant;
 import com.example.bcpp.model.Merchant;
 import com.example.bcpp.repository.CompanyMerchantRepository;

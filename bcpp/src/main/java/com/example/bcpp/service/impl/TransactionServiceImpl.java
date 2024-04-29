@@ -1,12 +1,9 @@
 package com.example.bcpp.service.impl;
 
 import com.example.bcpp.dto.TransactionDTO;
-import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.*;
-import com.example.bcpp.model.enums.CardUpdateStatus;
 import com.example.bcpp.model.enums.RoleType;
 import com.example.bcpp.model.enums.TransactionStatus;
-import com.example.bcpp.model.enums.UserType;
 import com.example.bcpp.repository.TransactionRepository;
 import com.example.bcpp.service.*;
 import lombok.RequiredArgsConstructor;

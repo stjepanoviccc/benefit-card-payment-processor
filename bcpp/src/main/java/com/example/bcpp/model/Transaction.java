@@ -1,6 +1,5 @@
 package com.example.bcpp.model;
 
-import com.example.bcpp.model.enums.MerchantCategory;
 import com.example.bcpp.model.enums.TransactionStatus;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -9,7 +8,6 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor

@@ -3,7 +3,6 @@ package com.example.bcpp.repository;
 import com.example.bcpp.dto.CompanyDTO;
 import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.model.Company;
-import com.example.bcpp.model.CompanyCategory;
 import com.example.bcpp.model.CompanyMerchant;
 import com.example.bcpp.model.Merchant;
 import org.springframework.data.jpa.repository.JpaRepository;

@@ -1,7 +1,6 @@
 package com.example.bcpp.controller;
 
 import com.example.bcpp.dto.CardDTO;
-import com.example.bcpp.model.enums.CardUpdateStatus;
 import com.example.bcpp.service.CardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
