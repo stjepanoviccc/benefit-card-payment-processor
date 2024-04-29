@@ -22,6 +22,15 @@ public class CompanyCategoryServiceImpl implements CompanyCategoryService {
     private final CompanyRepository companyRepository;
 
     @Override
+    public CompanyCategory getModel(Long companyId, MerchantCategory category) {
+        CompanyCategory companyCategory = companyCategoryRepository.findByCompanyIdAndMerchantCategory(companyId, category);
+        if(companyCategory == null) {
+            throw new NotFoundException(String.format("Company with id %s is not associated with Category id %s", companyId, category));
+        }
+        return companyCategory;
+    }
+
+    @Override
     public CompanyCategoryDTO create(String merchantCategory, Long companyId) {
         MerchantCategory category = MerchantCategory.valueOf(merchantCategory);
         Company company = companyRepository.findById(companyId)

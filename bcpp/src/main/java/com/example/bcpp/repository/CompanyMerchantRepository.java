@@ -3,6 +3,7 @@ package com.example.bcpp.repository;
 import com.example.bcpp.dto.CompanyDTO;
 import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.model.Company;
+import com.example.bcpp.model.CompanyCategory;
 import com.example.bcpp.model.CompanyMerchant;
 import com.example.bcpp.model.Merchant;
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -24,5 +25,8 @@ public interface CompanyMerchantRepository extends JpaRepository<CompanyMerchant
             "WHERE cm.merchant_id = :merchantId;")
     List<CompanyDTO> findCompaniesByMerchantId(Long merchantId);
 
+    CompanyMerchant findByCompanyIdAndMerchantId(Long companyId, Long merchantId);
+
     boolean existsByCompanyAndMerchant(Company company, Merchant merchant);
+
 }

@@ -20,13 +20,12 @@ public class CompanyMerchant {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE})
     @JoinColumn(name = "company_id")
     private Company company;
 
-    @ManyToOne
+    @ManyToOne(cascade = {CascadeType.REMOVE})
     @JoinColumn(name = "merchant_id")
-    @OnDelete(action = OnDeleteAction.CASCADE)
     private Merchant merchant;
 
 }

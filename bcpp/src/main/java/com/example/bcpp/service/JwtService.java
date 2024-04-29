@@ -12,6 +12,8 @@ public interface JwtService {
 
     <T> T extractClaim(String token, Function<Claims, T> claimResolver);
 
+    String getRole(String token);
+
     String generateToken(UserDetails userDetails);
 
     String generateRefreshToken(UserDetails userDetails);

@@ -6,6 +6,7 @@ import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Company;
+import com.example.bcpp.model.CompanyCategory;
 import com.example.bcpp.model.CompanyMerchant;
 import com.example.bcpp.model.Merchant;
 import com.example.bcpp.repository.CompanyMerchantRepository;
@@ -27,6 +28,12 @@ public class CompanyMerchantServiceImpl implements CompanyMerchantService {
     private final CompanyRepository companyRepository;
     private final MerchantRepository merchantRepository;
     private final CompanyMerchantRepository companyMerchantRepository;
+
+    @Override
+    public CompanyMerchant getModel(Long companyId, Long merchantId) {
+        // it can be null
+        return companyMerchantRepository.findByCompanyIdAndMerchantId(companyId, merchantId);
+    }
 
     @Override
     public List<MerchantDTO> findMerchantsByCompanyId(Long id) {

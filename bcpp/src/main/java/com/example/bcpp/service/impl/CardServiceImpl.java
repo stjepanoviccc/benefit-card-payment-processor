@@ -30,6 +30,15 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
+    public Card getModelByUserId(Long userId) {
+        Card card = cardRepository.findByUserId(userId);
+        if (card == null) {
+            throw new NotFoundException(String.format("Card with user id %s not found.", userId));
+        }
+        return card;
+    }
+
+    @Override
     public List<CardDTO> findAll() {
         List<Card> cards = cardRepository.findAll();
         return cards.stream()

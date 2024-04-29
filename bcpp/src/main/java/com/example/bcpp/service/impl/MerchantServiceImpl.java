@@ -3,6 +3,7 @@ package com.example.bcpp.service.impl;
 import com.example.bcpp.dto.CompanyDTO;
 import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.exception.BadRequestException;
+import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Merchant;
 import com.example.bcpp.repository.MerchantRepository;
 import com.example.bcpp.service.CompanyMerchantService;
@@ -21,6 +22,12 @@ public class MerchantServiceImpl implements MerchantService {
 
     private final MerchantRepository merchantRepository;
     private final CompanyMerchantService companyMerchantService;
+
+    @Override
+    public Merchant getModel(Long merchantId) {
+        return merchantRepository.findById(merchantId)
+                .orElseThrow(() -> new NotFoundException(String.format("Merchant with id %s not found.", merchantId)));
+    }
 
     @Override
     public List<MerchantDTO> findAll() {

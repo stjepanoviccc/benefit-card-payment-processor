@@ -4,6 +4,7 @@ import com.example.bcpp.dto.DiscountDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.CompanyMerchant;
+import com.example.bcpp.model.Discount;
 import com.example.bcpp.repository.CompanyMerchantRepository;
 import com.example.bcpp.repository.DiscountRepository;
 import com.example.bcpp.service.DiscountService;
@@ -18,6 +19,15 @@ public class DiscountServiceImpl implements DiscountService {
 
     private final DiscountRepository discountRepository;
     private final CompanyMerchantRepository companyMerchantRepository;
+
+    @Override
+    public Discount getModel(Long companyMerchantId) {
+        Discount discount = discountRepository.findByCompanyMerchantId(companyMerchantId);
+        if(discount == null) {
+            throw new NotFoundException("Discount with that CompanyMerchantId is not found.");
+        };
+        return discount;
+    }
 
     @Override
     public DiscountDTO create(DiscountDTO discountDTO, Long companyMerchantId) {
