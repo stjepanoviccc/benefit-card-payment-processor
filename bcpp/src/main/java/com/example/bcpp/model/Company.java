@@ -1,5 +1,6 @@
 package com.example.bcpp.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -23,6 +24,7 @@ public class Company {
     @Column(nullable = false)
     private String name;
 
-    @OneToMany(mappedBy = "company")
+    @JsonIgnore
+    @OneToMany(mappedBy = "company", cascade = CascadeType.PERSIST)
     private List<CompanyMerchant> companyMerchants;
 }

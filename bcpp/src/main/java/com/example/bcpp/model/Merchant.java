@@ -1,6 +1,7 @@
 package com.example.bcpp.model;
 
 import com.example.bcpp.model.enums.MerchantCategory;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -31,6 +32,7 @@ public class Merchant {
     @Column(nullable = false)
     private Double price;
 
-    @OneToMany(mappedBy = "merchant")
+    @JsonIgnore
+    @OneToMany(mappedBy = "merchant", cascade = CascadeType.ALL)
     private List<CompanyMerchant> companyMerchants;
 }

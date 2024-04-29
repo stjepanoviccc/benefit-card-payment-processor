@@ -1,6 +1,5 @@
 package com.example.bcpp.model;
 
-import com.example.bcpp.model.enums.MerchantCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -19,17 +18,11 @@ public class Discount {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "company_id")
-    private Long companyId;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "company_merchant_id", nullable = false)
+    private CompanyMerchant companyMerchant;
 
-    @Column(name = "merchant_id")
-    private Long merchantId;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "merchant_category")
-    private MerchantCategory merchantCategory;
-
-    @Column(name= "discount_percentage")
+    @Column(name= "discount_percentage", nullable = false)
     private Double discountPercentage;
 
 }
