@@ -37,6 +37,20 @@ public class JwtServiceImpl implements JwtService {
     }
 
     @Override
+    public String getRole(String token) {
+        if (token == null || token.isEmpty()) {
+            throw new IllegalArgumentException("JWT token is null or empty");
+        }
+
+        Claims claims = extractAllClaims(token);
+        if (claims == null) {
+            throw new IllegalArgumentException("Invalid JWT token");
+        }
+
+        return (String) claims.get("role");
+    }
+
+    @Override
     public String generateToken(UserDetails userDetails) {
         return generateToken(new HashMap<>(), userDetails);
     }

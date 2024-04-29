@@ -20,12 +20,15 @@ public class CardDTO {
     private User user;
     @NotBlank
     private String cardNumber;
+    @NotBlank
+    private Double totalAmount;
 
     public static CardDTO convertToDto(Card card) {
         return CardDTO.builder()
                 .id(card.getId())
                 .user(card.getUser())
                 .cardNumber(card.getCardNumber())
+                .totalAmount(card.getTotalAmount())
                 .build();
     }
 
@@ -33,7 +36,8 @@ public class CardDTO {
         return Card.builder()
                 .id(getId())
                 .user(getUser())
-                .cardNumber((getCardNumber()))
+                .cardNumber(getCardNumber())
+                .totalAmount(getTotalAmount())
                 .build();
     }
 }

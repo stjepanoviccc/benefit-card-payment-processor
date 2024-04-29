@@ -1,5 +1,6 @@
 package com.example.bcpp.model;
 
+import com.example.bcpp.model.enums.MerchantCategory;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -11,20 +12,18 @@ import lombok.NoArgsConstructor;
 @NoArgsConstructor
 @Entity
 @Builder
-@Table(name = "`card`")
-public class Card {
+@Table(name = "`company_category`")
+public class CompanyCategory {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id", nullable = false)
-    private User user;
+    @ManyToOne(cascade = {CascadeType.REMOVE})
+    @JoinColumn(name = "company_id")
+    private Company company;
 
-    @Column(name="card_number", nullable = false)
-    private String cardNumber;
+    @JoinColumn(name = "category_name")
+    private MerchantCategory merchantCategory;
 
-    @Column(name="total_amount", nullable = false)
-    private Double totalAmount;
 }

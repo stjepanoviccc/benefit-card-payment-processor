@@ -1,9 +1,8 @@
 package com.example.bcpp.service.impl;
 
-import com.example.bcpp.dto.CompanyDTO;
 import com.example.bcpp.dto.UserDTO;
 import com.example.bcpp.exception.BadRequestException;
-import com.example.bcpp.model.Company;
+import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.User;
 import com.example.bcpp.repository.UserRepository;
 import com.example.bcpp.service.CardService;
@@ -26,6 +25,12 @@ public class UserServiceImpl implements UserService {
     private final CompanyService companyService;
     private final CardService cardService;
     private final PasswordEncoder passwordEncoder;
+
+    @Override
+    public User getModel(Long userId) {
+        return userRepository.findById(userId)
+                .orElseThrow(() -> new NotFoundException(String.format("User with id %s not found.", userId)));
+    }
 
     @Override
     public List<UserDTO> findAll() {
