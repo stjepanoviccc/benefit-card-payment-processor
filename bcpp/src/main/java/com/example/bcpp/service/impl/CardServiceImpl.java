@@ -38,14 +38,6 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public List<CardDTO> findAll() {
-        List<Card> cards = cardRepository.findAll();
-        return cards.stream()
-                .map(CardDTO::convertToDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public CardDTO create(User user) {
         String generatedCardNumber = GenerateCardNumber.generateCardNumber();
         cardRepository.findByCardNumber(generatedCardNumber)

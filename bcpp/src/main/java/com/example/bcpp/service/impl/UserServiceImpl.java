@@ -33,14 +33,6 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public List<UserDTO> findAll() {
-        List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(UserDTO::convertToDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public UserDTO create(UserDTO userDTO, Long companyId) {
         userRepository.findByEmail(userDTO.getEmail())
                 .ifPresent(accountRequest -> {

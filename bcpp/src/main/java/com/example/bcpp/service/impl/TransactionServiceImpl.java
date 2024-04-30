@@ -28,14 +28,6 @@ public class TransactionServiceImpl implements TransactionService {
     private final DiscountService discountService;
 
     @Override
-    public List<TransactionDTO> findAll() {
-        List<Transaction> transactions = transactionRepository.findAll();
-        return transactions.stream()
-                .map(TransactionDTO::convertToDto)
-                .collect(Collectors.toList());
-    }
-
-    @Override
     public TransactionDTO create(Long userId, Long merchantId, String role) {
         User user = userService.getModel(userId);
         Card card = cardService.getModelByUserId(userId);

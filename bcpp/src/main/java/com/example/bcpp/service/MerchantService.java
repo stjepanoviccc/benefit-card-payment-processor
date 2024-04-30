@@ -8,7 +8,6 @@ import java.util.List;
 public interface MerchantService {
 
     Merchant getModel(Long merchantId);
-    List<MerchantDTO> findAll();
     MerchantDTO create(MerchantDTO merchantDTO);
 
 }

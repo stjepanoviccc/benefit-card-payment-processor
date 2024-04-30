@@ -8,7 +8,6 @@ import java.util.List;
 public interface CompanyService {
 
     Company getModel(Long id);
-    List<CompanyDTO> findAll();
     CompanyDTO create(CompanyDTO companyDTO);
 
 

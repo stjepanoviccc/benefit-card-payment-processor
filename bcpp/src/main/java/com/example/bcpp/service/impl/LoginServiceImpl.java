@@ -20,8 +20,6 @@ public class LoginServiceImpl implements LoginService {
 
     private final UserDetailsService userDetailsService;
 
-    private final UserService userService;
-
     @Override
     public LoginResponseDTO login(LoginRequestDTO loginRequestDTO) {
         authenticationManager.authenticate(

@@ -21,11 +21,6 @@ public class TransactionController {
     private final TransactionService transactionService;
     private final JwtService jwtService;
 
-    @GetMapping()
-    public ResponseEntity<List<TransactionDTO>> findAll() {
-        return ResponseEntity.ok(transactionService.findAll());
-    }
-
     @PostMapping("/users/{userId}/merchants/{merchantId}")
     @PreAuthorize("hasAnyRole('ROLE_Standard', 'ROLE_Premium', 'ROLE_Platinum')")
     public ResponseEntity<TransactionDTO> create(@PathVariable Long userId, @PathVariable Long merchantId, HttpServletRequest request) {

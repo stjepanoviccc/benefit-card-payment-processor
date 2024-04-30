@@ -21,23 +21,11 @@ import static com.example.bcpp.dto.MerchantDTO.convertToDto;
 public class MerchantServiceImpl implements MerchantService {
 
     private final MerchantRepository merchantRepository;
-    private final CompanyMerchantService companyMerchantService;
 
     @Override
     public Merchant getModel(Long merchantId) {
         return merchantRepository.findById(merchantId)
                 .orElseThrow(() -> new NotFoundException(String.format("Merchant with id %s not found.", merchantId)));
-    }
-
-    @Override
-    public List<MerchantDTO> findAll() {
-        List<Merchant> merchants = merchantRepository.findAll();
-        List<MerchantDTO> merchantDTOs = new ArrayList<>();
-        for (Merchant merchant : merchants) {
-            List<CompanyDTO> companyDTOs = companyMerchantService.findCompaniesByMerchantId(merchant.getId());
-                merchantDTOs.add(convertToDto(merchant, companyDTOs));
-        }
-        return merchantDTOs;
     }
 
     @Override

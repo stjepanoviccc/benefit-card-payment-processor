@@ -9,7 +9,6 @@ import java.util.List;
 public interface CardService {
     Card getModel(Long id);
     Card getModelByUserId(Long userId);
-    List<CardDTO> findAll();
     CardDTO create(User user);
     CardDTO update(Long cardId, Double amount, String cardUpdateStatus, Long userId);
 }
