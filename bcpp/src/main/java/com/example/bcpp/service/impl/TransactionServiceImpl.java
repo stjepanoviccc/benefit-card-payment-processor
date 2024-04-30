@@ -77,7 +77,7 @@ public class TransactionServiceImpl implements TransactionService {
         transactionDTO.setUser(user);
         if (card.getTotalAmount() >= transactionDTO.getAmount()) {
             transactionDTO.setStatus(TransactionStatus.Successful);
-            cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE");
+            cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE", user.getId());
         } else {
             transactionDTO.setStatus(TransactionStatus.Unsuccessful);
         }
