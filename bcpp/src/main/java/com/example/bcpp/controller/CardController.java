@@ -22,10 +22,11 @@ public class CardController {
         return ResponseEntity.ok(convertToDto(cardService.getModel(cardId)));
     }
 
-    @PatchMapping("/{cardId}/update/{amount}/status/{cardUpdateStatus}")
+    @PatchMapping("/{cardId}/update/{amount}/status/{cardUpdateStatus}/users/{userId}")
     @PreAuthorize("hasAnyRole('ROLE_Standard', 'ROLE_Premium', 'ROLE_Platinum')")
-    public ResponseEntity<CardDTO> updateTotalAmount(@PathVariable Long cardId, @PathVariable Double amount, @PathVariable String cardUpdateStatus) {
-        return ResponseEntity.ok(cardService.update(cardId, amount, cardUpdateStatus));
+    public ResponseEntity<CardDTO> updateTotalAmount(@PathVariable Long cardId, @PathVariable Double amount, @PathVariable String cardUpdateStatus,
+        @PathVariable Long userId) {
+        return ResponseEntity.ok(cardService.update(cardId, amount, cardUpdateStatus, userId));
     }
 
 }

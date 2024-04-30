@@ -60,9 +60,12 @@ public class CardServiceImpl implements CardService {
     }
 
     @Override
-    public CardDTO update(Long cardId, Double amount, String cardUpdateStatus) {
+    public CardDTO update(Long cardId, Double amount, String cardUpdateStatus, Long userId) {
         Card card = getModel(cardId);
         Double newTotalAmount = card.getTotalAmount();
+        if(card.getUser().getId() != userId) {
+            throw new BadRequestException("This user is not connected with this card.");
+        }
         if(cardUpdateStatus.equals("INCREASE")) {
             newTotalAmount += amount;
         } else if(cardUpdateStatus.equals("DECREASE")) {

@@ -11,5 +11,5 @@ public interface CardService {
     Card getModelByUserId(Long userId);
     List<CardDTO> findAll();
     CardDTO create(User user);
-    CardDTO update(Long cardId, Double amount, String cardUpdateStatus);
+    CardDTO update(Long cardId, Double amount, String cardUpdateStatus, Long userId);
 }
