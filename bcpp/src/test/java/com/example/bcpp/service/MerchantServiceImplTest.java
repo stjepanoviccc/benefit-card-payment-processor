@@ -1,17 +1,12 @@
 package com.example.bcpp.service;
 
 import com.example.bcpp.dto.MerchantDTO;
-import com.example.bcpp.dto.UserDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Merchant;
-import com.example.bcpp.model.User;
 import com.example.bcpp.model.enums.MerchantCategory;
-import com.example.bcpp.model.enums.UserType;
 import com.example.bcpp.repository.MerchantRepository;
-import com.example.bcpp.repository.UserRepository;
 import com.example.bcpp.service.impl.MerchantServiceImpl;
-import com.example.bcpp.service.impl.UserServiceImpl;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -22,9 +17,7 @@ import java.util.Optional;
 
 import static com.example.bcpp.dto.MerchantDTO.convertToDto;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 public class MerchantServiceImplTest {

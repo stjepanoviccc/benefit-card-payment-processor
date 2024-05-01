@@ -1,6 +1,7 @@
 package com.example.bcpp.service.impl;
 
 import com.example.bcpp.dto.TransactionDTO;
+import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.model.*;
 import com.example.bcpp.model.enums.RoleType;
 import com.example.bcpp.model.enums.TransactionStatus;
@@ -10,8 +11,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
-import java.util.List;
-import java.util.stream.Collectors;
 
 import static com.example.bcpp.dto.TransactionDTO.convertToDto;
 
@@ -38,52 +37,69 @@ public class TransactionServiceImpl implements TransactionService {
         TransactionDTO transactionDTO = new TransactionDTO();
         transactionDTO.setAmount(merchant.getPrice());
 
-        switch(RoleType.valueOf(role)) {
-            case ROLE_Standard:
+        try {
+            switch(RoleType.valueOf(role)) {
+                case ROLE_Standard:
                     companyCategoryService.getModel(companyId, merchant.getCategory());
-                    processTransaction(transactionDTO, user, card, merchant);
-
-                    break;
-            case ROLE_Premium:
-                    processTransaction(transactionDTO, user, card, merchant);
-
-                    break;
-            case ROLE_Platinum:
-                    CompanyMerchant companyMerchant = companyMerchantService.getModel(companyId, merchantId);
-                    if(companyMerchant != null) {
-                        processPlatinumTransaction(transactionDTO, user, card, merchant, companyMerchant);
+                    transactionDTO.setDate(LocalDateTime.now());
+                    transactionDTO.setMerchant(merchant);
+                    transactionDTO.setUser(user);
+                    if (card.getTotalAmount() >= transactionDTO.getAmount()) {
+                        transactionDTO.setStatus(TransactionStatus.Successful);
+                        cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE", user.getId());
                     } else {
-                        processTransaction(transactionDTO, user, card, merchant);
+                        transactionDTO.setStatus(TransactionStatus.Unsuccessful);
                     }
 
                     break;
+                case ROLE_Premium:
+                    transactionDTO.setDate(LocalDateTime.now());
+                    transactionDTO.setMerchant(merchant);
+                    transactionDTO.setUser(user);
+                    if (card.getTotalAmount() >= transactionDTO.getAmount()) {
+                        transactionDTO.setStatus(TransactionStatus.Successful);
+                        cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE", user.getId());
+                    } else {
+                        transactionDTO.setStatus(TransactionStatus.Unsuccessful);
+                    }
+
+                    break;
+                case ROLE_Platinum:
+                    CompanyMerchant companyMerchant = companyMerchantService.getModel(companyId, merchantId);
+                    if(companyMerchant != null) {
+                        Discount discount = discountService.getModel(companyMerchant.getId());
+                        Double discountPercentage = discount.getDiscountPercentage();
+                        Double discountedAmount = transactionDTO.getAmount() - (transactionDTO.getAmount() * discountPercentage / 100);
+                        transactionDTO.setAmount(discountedAmount);
+                        transactionDTO.setDate(LocalDateTime.now());
+                        transactionDTO.setMerchant(merchant);
+                        transactionDTO.setUser(user);
+                        if (card.getTotalAmount() >= transactionDTO.getAmount()) {
+                            transactionDTO.setStatus(TransactionStatus.Successful);
+                            cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE", user.getId());
+                        } else {
+                            transactionDTO.setStatus(TransactionStatus.Unsuccessful);
+                        }
+                    } else {
+                        transactionDTO.setDate(LocalDateTime.now());
+                        transactionDTO.setMerchant(merchant);
+                        transactionDTO.setUser(user);
+                        if (card.getTotalAmount() >= transactionDTO.getAmount()) {
+                            transactionDTO.setStatus(TransactionStatus.Successful);
+                            cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE", user.getId());
+                        } else {
+                            transactionDTO.setStatus(TransactionStatus.Unsuccessful);
+                        }
+                    }
+
+                    break;
+            }
+
+            return convertToDto(transactionRepository.save(transactionDTO.convertToModel()));
+
+        } catch(Exception e) {
+            throw new BadRequestException("Something wrong happened with transaction. Check UserType and please try again.");
         }
 
-        return convertToDto(transactionRepository.save(transactionDTO.convertToModel()));
-    }
-
-    // helping methods
-    private void processTransaction(TransactionDTO transactionDTO, User user, Card card, Merchant merchant) {
-        transactionDTO.setDate(LocalDateTime.now());
-        transactionDTO.setMerchant(merchant);
-        transactionDTO.setUser(user);
-        if (card.getTotalAmount() >= transactionDTO.getAmount()) {
-            transactionDTO.setStatus(TransactionStatus.Successful);
-            cardService.update(card.getId(), transactionDTO.getAmount(), "DECREASE", user.getId());
-        } else {
-            transactionDTO.setStatus(TransactionStatus.Unsuccessful);
-        }
-    }
-
-    private void processPlatinumTransaction(TransactionDTO transactionDTO, User user, Card card, Merchant merchant, CompanyMerchant companyMerchant) {
-        Discount discount = discountService.getModel(companyMerchant.getId());
-        Double discountPercentage = discount.getDiscountPercentage();
-        Double discountedAmount = calculateDiscountedAmount(transactionDTO.getAmount(), discountPercentage);
-        transactionDTO.setAmount(discountedAmount);
-        processTransaction(transactionDTO, user, card, merchant);
-    }
-
-    private Double calculateDiscountedAmount(Double originalAmount, Double discountPercentage) {
-        return originalAmount - (originalAmount * discountPercentage / 100);
     }
 }

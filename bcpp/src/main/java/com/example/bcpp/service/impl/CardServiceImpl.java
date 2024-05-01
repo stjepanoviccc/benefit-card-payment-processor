@@ -11,9 +11,6 @@ import com.example.bcpp.utils.GenerateCardNumber;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static com.example.bcpp.dto.CardDTO.convertToDto;
 
 @Service
@@ -30,11 +27,8 @@ public class CardServiceImpl implements CardService {
 
     @Override
     public Card getModelByUserId(Long userId) {
-        Card card = cardRepository.findByUserId(userId);
-        if (card == null) {
-            throw new NotFoundException(String.format("Card with user id %s not found.", userId));
-        }
-        return card;
+        return cardRepository.findByUserId(userId)
+                .orElseThrow(() -> new NotFoundException(String.format("Card with user id %s not found.", userId)));
     }
 
     @Override
@@ -42,7 +36,7 @@ public class CardServiceImpl implements CardService {
         String generatedCardNumber = GenerateCardNumber.generateCardNumber();
         cardRepository.findByCardNumber(generatedCardNumber)
                 .ifPresent(dto -> {
-                    throw new BadRequestException(String.format("Card with this number %s is already in database", generatedCardNumber));
+                    throw new BadRequestException("Card with this number is already in database");
                 });;
         Card card = new Card();
         card.setCardNumber(generatedCardNumber);

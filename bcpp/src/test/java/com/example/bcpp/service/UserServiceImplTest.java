@@ -1,10 +1,8 @@
 package com.example.bcpp.service;
 
-import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.dto.UserDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
-import com.example.bcpp.model.Merchant;
 import com.example.bcpp.model.User;
 import com.example.bcpp.model.enums.UserType;
 import com.example.bcpp.repository.UserRepository;
@@ -20,9 +18,7 @@ import java.util.Optional;
 
 import static com.example.bcpp.dto.UserDTO.convertToDto;
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.mockito.Mockito.*;
-import static org.mockito.Mockito.verifyNoMoreInteractions;
 
 @ExtendWith(MockitoExtension.class)
 public class UserServiceImplTest {

@@ -22,11 +22,8 @@ public class DiscountServiceImpl implements DiscountService {
 
     @Override
     public Discount getModel(Long companyMerchantId) {
-        Discount discount = discountRepository.findByCompanyMerchantId(companyMerchantId);
-        if(discount == null) {
-            throw new NotFoundException("Discount with that CompanyMerchantId is not found.");
-        };
-        return discount;
+        return discountRepository.findByCompanyMerchantId(companyMerchantId)
+                .orElseThrow(() -> new NotFoundException("Discount with that CompanyMerchantId is not found."));
     }
 
     @Override

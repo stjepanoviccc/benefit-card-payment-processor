@@ -3,7 +3,6 @@ package com.example.bcpp.service.impl;
 import com.example.bcpp.dto.LoginRequestDTO;
 import com.example.bcpp.dto.LoginResponseDTO;
 import com.example.bcpp.service.LoginService;
-import com.example.bcpp.service.UserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

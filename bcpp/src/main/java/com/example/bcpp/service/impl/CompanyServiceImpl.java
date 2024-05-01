@@ -1,18 +1,13 @@
 package com.example.bcpp.service.impl;
 
 import com.example.bcpp.dto.CompanyDTO;
-import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Company;
 import com.example.bcpp.repository.CompanyRepository;
-import com.example.bcpp.service.CompanyMerchantService;
 import com.example.bcpp.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.ArrayList;
-import java.util.List;
 
 import static com.example.bcpp.dto.CompanyDTO.convertToDto;
 
