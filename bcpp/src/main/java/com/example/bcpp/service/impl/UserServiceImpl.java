@@ -12,9 +12,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
 import static com.example.bcpp.dto.UserDTO.convertToDto;
 
 @Service
@@ -30,14 +27,6 @@ public class UserServiceImpl implements UserService {
     public User getModel(Long userId) {
         return userRepository.findById(userId)
                 .orElseThrow(() -> new NotFoundException(String.format("User with id %s not found.", userId)));
-    }
-
-    @Override
-    public List<UserDTO> findAll() {
-        List<User> users = userRepository.findAll();
-        return users.stream()
-                .map(UserDTO::convertToDto)
-                .collect(Collectors.toList());
     }
 
     @Override

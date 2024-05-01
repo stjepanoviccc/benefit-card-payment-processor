@@ -2,9 +2,13 @@ package com.example.bcpp.service;
 
 import com.example.bcpp.dto.TransactionDTO;
 
-import java.util.List;
-
 public interface TransactionService {
-    List<TransactionDTO> findAll();
     TransactionDTO create(Long userId, Long merchantId, String role);
+/*
+    // helping methods
+    void processTransaction(TransactionDTO transactionDTO, User user, Card card, Merchant merchant);
+
+    void processPlatinumTransaction(TransactionDTO transactionDTO, User user, Card card, Merchant merchant, CompanyMerchant companyMerchant);
+
+    Double calculateDiscountedAmount(Double originalAmount, Double discountPercentage); */
 }

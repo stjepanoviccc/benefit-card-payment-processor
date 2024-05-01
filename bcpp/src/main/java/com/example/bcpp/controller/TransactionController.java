@@ -7,9 +7,10 @@ import jakarta.servlet.http.HttpServletRequest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import static org.springframework.http.HttpStatus.CREATED;
 
@@ -20,11 +21,6 @@ public class TransactionController {
 
     private final TransactionService transactionService;
     private final JwtService jwtService;
-
-    @GetMapping()
-    public ResponseEntity<List<TransactionDTO>> findAll() {
-        return ResponseEntity.ok(transactionService.findAll());
-    }
 
     @PostMapping("/users/{userId}/merchants/{merchantId}")
     @PreAuthorize("hasAnyRole('ROLE_Standard', 'ROLE_Premium', 'ROLE_Platinum')")

@@ -1,8 +1,6 @@
 package com.example.bcpp.service.impl;
 
-import com.example.bcpp.dto.CompanyDTO;
 import com.example.bcpp.dto.CompanyMerchantDTO;
-import com.example.bcpp.dto.MerchantDTO;
 import com.example.bcpp.exception.BadRequestException;
 import com.example.bcpp.exception.NotFoundException;
 import com.example.bcpp.model.Company;
@@ -14,9 +12,6 @@ import com.example.bcpp.repository.MerchantRepository;
 import com.example.bcpp.service.CompanyMerchantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import java.util.Collections;
-import java.util.List;
 
 import static com.example.bcpp.dto.CompanyMerchantDTO.convertToDto;
 
@@ -31,19 +26,8 @@ public class CompanyMerchantServiceImpl implements CompanyMerchantService {
     @Override
     public CompanyMerchant getModel(Long companyId, Long merchantId) {
         // it can be null
-        return companyMerchantRepository.findByCompanyIdAndMerchantId(companyId, merchantId);
-    }
-
-    @Override
-    public List<MerchantDTO> findMerchantsByCompanyId(Long id) {
-        List<MerchantDTO> merchants = companyMerchantRepository.findMerchantsByCompanyId(id);
-        return merchants != null ? merchants : Collections.emptyList();
-    }
-
-    @Override
-    public List<CompanyDTO> findCompaniesByMerchantId(Long id) {
-        List<CompanyDTO> companies = companyMerchantRepository.findCompaniesByMerchantId(id);
-        return companies != null ? companies : Collections.emptyList();
+        return companyMerchantRepository.findByCompanyIdAndMerchantId(companyId, merchantId)
+                .orElseThrow(() -> new NotFoundException("CompanyMerchant associated with this company and category not found."));
     }
 
     @Override

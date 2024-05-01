@@ -23,11 +23,8 @@ public class CompanyCategoryServiceImpl implements CompanyCategoryService {
 
     @Override
     public CompanyCategory getModel(Long companyId, MerchantCategory category) {
-        CompanyCategory companyCategory = companyCategoryRepository.findByCompanyIdAndMerchantCategory(companyId, category);
-        if(companyCategory == null) {
-            throw new NotFoundException(String.format("Company with id %s is not associated with Category id %s", companyId, category));
-        }
-        return companyCategory;
+        return companyCategoryRepository.findByCompanyIdAndMerchantCategory(companyId, category)
+                .orElseThrow(() -> new NotFoundException("CompanyCategory associated with this company and category not found."));
     }
 
     @Override
