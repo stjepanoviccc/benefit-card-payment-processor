@@ -1,0 +1,1581 @@
+{
+	"info": {
+		"_postman_id": "59d7fb93-c160-4c79-af78-b883e0b2f63c",
+		"name": "BENEFIT CARD PAYMENT PROCESSOR",
+		"description": "- **NOTE: BEFORE STARTING PROGRAM MAKE SURE TO SET UP ENVIROMENT VARIABLE THAT I EXPORTED AND SET IT TO BE USED IN THIS COLLECTION.**\n    \n\n- INITIALIZE DATA - In this folder there is data set which you must run before starting program as any type of user. You can run requests one by one or you can run all requests at once.\n    \n- STANDARD USER - In this folder you are starting program as standard user. You can run requests one by one or you can run all requests at once.\n    \n- PREMIUM USER - In this folder you are starting program as premium user. You can run requests one by one or you can run all requests at once.\n    \n- PLATINUM USER - In this folder you are starting program as platinum user. You can run requests one by one or you can run all requests at once.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "26096728"
+	},
+	"item": [
+		{
+			"name": "INITIALIZE DATA",
+			"item": [
+				{
+					"name": "1. Create Company1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Company1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies"
+							]
+						},
+						"description": "This will create new company and return DTO for that company. If you try to create company with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Create Company2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Company2\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "FAD - Fitness Company",
+									"disabled": true
+								}
+							]
+						},
+						"description": "This will create new company and return DTO for that company. If you try to create company with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Create Company3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Company3\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies"
+							]
+						},
+						"description": "This will create new company and return DTO for that company. If you try to create company with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "4. Create User1 For Company1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"standard_user@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Standard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(standard) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "5. Create User2 For Company1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"premium_user@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Premium\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(premium) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Create User3 For Company1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"platinum_user@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Platinum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(platinum) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Create User1 For Company2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"standard_user2@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Standard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/2/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"2",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(standard) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Create User2 For Company2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"premium_user2@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Premium\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/2/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"2",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(premium) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "9. Create User3 For Company2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"platinum_user2@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Platinum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/2/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"2",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(platinum) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "10. Create User1 For Company3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"standard_user3@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Standard\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/3/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"3",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(standard) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "11. Create User2 For Company3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"premium_user3@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Premium\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/3/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"3",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(premium) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "12. Create User3 For Company3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"email\": \"platinum_user3@example.com\",\r\n  \"password\": \"password\",\r\n  \"role\": \"Platinum\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/companies/3/createUser",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"3",
+								"createUser"
+							]
+						},
+						"description": "This will create new user(platinum) for specific company and also on server card for that user will be created. This request will return just UserDTO. If you try to create user with same email it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "13. Create Merchant1",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Restaurant\",\r\n  \"category\": \"FoodAndDrinks\",\r\n  \"price\": 100\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/merchants",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"merchants"
+							]
+						},
+						"description": "This request will create new merchant and return DTO. If you try to create merchant with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "14. Create Merchant2",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Fitness\",\r\n  \"category\": \"Recreation\",\r\n  \"price\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/merchants",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"merchants"
+							]
+						},
+						"description": "This request will create new merchant and return DTO. If you try to create merchant with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "15. Create Merchant3",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Book\",\r\n  \"category\": \"Education\",\r\n  \"price\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/merchants",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"merchants"
+							]
+						},
+						"description": "This request will create new merchant and return DTO. If you try to create merchant with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "16. Create Merchant4",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Cinema\",\r\n  \"category\": \"Culture\",\r\n  \"price\": 30\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/merchants",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"merchants"
+							]
+						},
+						"description": "This request will create new merchant and return DTO. If you try to create merchant with same name it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "17. Create Benefit(Company1 Merchant1 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/merchants/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"merchants",
+								"1"
+							]
+						},
+						"description": "This will create benefit between company and merchant and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "18. Create Benefit(Company1 Merchant2 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/merchants/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"merchants",
+								"2"
+							]
+						},
+						"description": "This will create benefit between company and merchant and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "19. Create Benefit(Company1 Merchant3 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/merchants/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"merchants",
+								"3"
+							]
+						},
+						"description": "This will create benefit between company and merchant and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "20. Create Benefit(Company2 Merchant1 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/2/merchants/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"2",
+								"merchants",
+								"1"
+							]
+						},
+						"description": "This will create benefit between company and merchant and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "21. Create Benefit(Company2 Merchant2 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/2/merchants/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"2",
+								"merchants",
+								"2"
+							]
+						},
+						"description": "This will create benefit between company and merchant and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "22. Create Benefit(Company1 Category0 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/1/categories/FoodAndDrinks",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"1",
+								"categories",
+								"FoodAndDrinks"
+							]
+						},
+						"description": "This will create benefit between company and category and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "23. Create Benefit(Company2 Category1 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/2/categories/Recreation",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"2",
+								"categories",
+								"Recreation"
+							]
+						},
+						"description": "This will create benefit between company and category and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "24. Create Benefit(Company3 Category2 junction)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/companies/3/categories/Education",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"companies",
+								"3",
+								"categories",
+								"Education"
+							]
+						},
+						"description": "This will create benefit between company and category and return DTO. If that benefit already exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "25. Create Discount(Company1Merchant1)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountPercentage\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/discounts/companyMerchant/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"discounts",
+								"companyMerchant",
+								"1"
+							]
+						},
+						"description": "This will create discount between company and merchant and return DTO. If that discount exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "26. Create Discount(Company1Merchant2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountPercentage\": 10\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/discounts/companyMerchant/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"discounts",
+								"companyMerchant",
+								"2"
+							]
+						},
+						"description": "This will create discount between company and merchant and return DTO. If that discount exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "27. Create Discount(Company1Merchant3)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountPercentage\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/discounts/companyMerchant/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"discounts",
+								"companyMerchant",
+								"3"
+							]
+						},
+						"description": "This will create discount between company and merchant and return DTO. If that discount exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "28. Create Discount(Company2Merchant1)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountPercentage\": 50\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/discounts/companyMerchant/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"discounts",
+								"companyMerchant",
+								"4"
+							]
+						},
+						"description": "This will create discount between company and merchant and return DTO. If that discount exists it will throw error"
+					},
+					"response": []
+				},
+				{
+					"name": "29. Create Discount(Company2Merchant2)",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"discountPercentage\": 20\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/discounts/companyMerchant/5",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"discounts",
+								"companyMerchant",
+								"5"
+							]
+						},
+						"description": "This will create discount between company and merchant and return DTO. If that discount exists it will throw error"
+					},
+					"response": []
+				}
+			],
+			"description": "- Right click on INITIALIZE DATA folder and run all at same time. Also when you run you can click to show response so you will see that all data is initialized successfully.\n- (1,2,3) ... First it will create 3 company.\n- (4...12) ... After that, for each company it will create one standard, one premium and one platinum user. Also on user creation, each user will get card for them using Random Number Generator.\n- (13,14,15) ... These steps will create 3 merchants with different categories.\n- (16,17,18,19,20) ... These steps will create benefits (CompanyMerchant junction) which will be used for platinum user especially.\n- (21,22,23) ... These steps will create benefits (CompanyCategory junction) which will be used for standard user especially.\n- (24,25,26,27,28) ... These steps will create Discounts for specific CompanyMerchant junction.\n- **NOTE: Since this is not production enviroment, in Spring Security i permitted these requests so we don't unnecessary entity for administrator/moderator to handle creation of these entities.**"
+		},
+		{
+			"name": "STANDARD USER",
+			"item": [
+				{
+					"name": "1. Standard User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"standard_user@example.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "This request will log in as standard user and set token in enviroment and will return DTO. If you type bad credentials it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"1"
+							]
+						},
+						"description": "This request will return card DTO to check does it exist."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Increase Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/1/update/400/status/INCREASE/users/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"1",
+								"update",
+								"400",
+								"status",
+								"INCREASE",
+								"users",
+								"1"
+							]
+						},
+						"description": "This request will increase funds for specific user and return DTO"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Decrease Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/1/update/10/status/DECREASE/users/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"1",
+								"update",
+								"10",
+								"status",
+								"DECREASE",
+								"users",
+								"1"
+							]
+						},
+						"description": "This request will decrease funds for specific user and return DTO"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Unsuccessful Decrease Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/1/update/10000/status/DECREASE/users/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"1",
+								"update",
+								"10000",
+								"status",
+								"DECREASE",
+								"users",
+								"1"
+							]
+						},
+						"description": "This request will throw error because there isn't enough funds in total to be decreased."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Successful Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/1/merchants/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"1",
+								"merchants",
+								"1"
+							]
+						},
+						"description": "This request will return successful transaction because company is connected to specific category, (without any discount) and also will return DTO."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Forbidden Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/1/merchants/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"1",
+								"merchants",
+								"4"
+							]
+						},
+						"description": "This request will throw error because company isn't connected to specific category."
+					},
+					"response": []
+				}
+			],
+			"description": "Right click on STANDARD USER folder and run all at same time. Also when you run you can click to show response so you will see that all data is initialized successfully.\n\n- (1) ... First step is to log in, script for saving token is in this request.\n- (2,3,4) ... You can check does card exist, then you can increase and decrease funds.\n    \n- (5) ... This will show unsuccessful decrease fund because you don't have enough money.\n    \n- (6,7) ... This will show unsuccessful transaction because as a Standard user you can only use benefits for categories that are connected with your company."
+		},
+		{
+			"name": "PREMIUM USER",
+			"item": [
+				{
+					"name": "1. Premium User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"premium_user@example.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "This request will log in as premium user and set token in enviroment and will return DTO. If you type bad credentials it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"2"
+							]
+						},
+						"description": "This request will return card DTO to check does it exist."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Increase Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/2/update/200/status/INCREASE/users/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"2",
+								"update",
+								"200",
+								"status",
+								"INCREASE",
+								"users",
+								"2"
+							]
+						},
+						"description": "This request will increase funds for specific user and return DTO"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Decrease Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/2/update/10/status/DECREASE/users/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"2",
+								"update",
+								"10",
+								"status",
+								"DECREASE",
+								"users",
+								"2"
+							]
+						},
+						"description": "This request will decrease funds for specific user and return DTO"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Unsuccessful Decrease Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/2/update/10000/status/DECREASE/users/2",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"2",
+								"update",
+								"10000",
+								"status",
+								"DECREASE",
+								"users",
+								"2"
+							]
+						},
+						"description": "This request will throw error because there isn't enough funds in total to be decreased."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Successful Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/2/merchants/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"2",
+								"merchants",
+								"1"
+							]
+						},
+						"description": "This request will return successful transaction (without any discount) and also will return DTO."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Successful Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/2/merchants/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"2",
+								"merchants",
+								"4"
+							]
+						},
+						"description": "This request will return successful transaction because user is premium/platinum so that means company doesn't need to be connected to specific category, (without any discount) and also will return DTO."
+					},
+					"response": []
+				},
+				{
+					"name": "8. Unsuccessful Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/2/merchants/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"2",
+								"merchants",
+								"1"
+							]
+						},
+						"description": "This request will return unsuccessful transaction because of not enough funds even if user is premium/platinum so that means company doesn't need to be connected to specific category, (without any discount) and also will return DTO."
+					},
+					"response": []
+				}
+			],
+			"description": "Right click on PREMIUM USER folder and run all at same time. Also when you run you can click to show response so you will see that all data is initialized successfully.\n\n- (1) ... First step is to log in, script for saving token is in this request.\n- (2,3,4) ... You can check does card exist, then you can increase and decrease funds.\n- (5) ... This will show unsuccessful decrease fund because you don't have enough money.\n- (6,7) ... This will show both successful transactions because(if you followed last step where we were working with Standard User), we were supposed to handle that step no.7 where user can only use benefit for categories which his company selected, but in this case premium user can use any category so this request here will work."
+		},
+		{
+			"name": "PLATINUM USER",
+			"item": [
+				{
+					"name": "1. Platinum User Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var jsonData = pm.response.json();\r",
+									"pm.environment.set(\"TOKEN\", jsonData.accessToken);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\": \"platinum_user@example.com\",\r\n    \"password\":\"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/login",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"login"
+							]
+						},
+						"description": "This request will log in as platinum user and set token in enviroment and will return DTO. If you type bad credentials it will throw error."
+					},
+					"response": []
+				},
+				{
+					"name": "2. Get Card",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"3"
+							]
+						},
+						"description": "This request will return card DTO to check does it exist."
+					},
+					"response": []
+				},
+				{
+					"name": "3. Increase Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/3/update/200/status/INCREASE/users/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"3",
+								"update",
+								"200",
+								"status",
+								"INCREASE",
+								"users",
+								"3"
+							]
+						},
+						"description": "This request will increase funds for specific user and return DTO"
+					},
+					"response": []
+				},
+				{
+					"name": "4. Decrease Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/3/update/10/status/DECREASE/users/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"3",
+								"update",
+								"10",
+								"status",
+								"DECREASE",
+								"users",
+								"3"
+							]
+						},
+						"description": "This request will decrease funds for specific user and return DTO"
+					},
+					"response": []
+				},
+				{
+					"name": "5. Unsuccessful Decrease Funds",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PATCH",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/cards/3/update/10000/status/DECREASE/users/3",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"cards",
+								"3",
+								"update",
+								"10000",
+								"status",
+								"DECREASE",
+								"users",
+								"3"
+							]
+						},
+						"description": "This request will throw error because there isn't enough funds in total to be decreased."
+					},
+					"response": []
+				},
+				{
+					"name": "6. Successful Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/3/merchants/1",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"3",
+								"merchants",
+								"1"
+							]
+						},
+						"description": "This request will return successful transaction with specific discount, because company is connected with specific merchant and user is platinum and also will return DTO."
+					},
+					"response": []
+				},
+				{
+					"name": "7. Successful Transaction",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "{{TOKEN}}",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{BASE_URL}}/transactions/users/3/merchants/4",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"transactions",
+								"users",
+								"3",
+								"merchants",
+								"4"
+							]
+						},
+						"description": "This request will return successful transaction because user is platinum/premium so that means company doesn't need to be connected to specific category, (without any discount) and also will return DTO."
+					},
+					"response": []
+				}
+			],
+			"description": "Right click on PREMIUM USER folder and run all at same time. Also when you run you can click to show response so you will see that all data is initialized successfully.\n\n- (1) ... First step is to log in, script for saving token is in this request.\n- (2,3,4) ... You can check does card exist, then you can increase and decrease funds.\n- (5) ... This will show unsuccessful decrease fund because you don't have enough money.\n- (6,7) ... This will show both successful transactions because(if you followed last step where we were working with Premium User), Premium User had advantage where he could use benefit from every category but Platinum User is one step ahead, he can have special discount for some merchants that are connected with his company. So sixth step is saved for that and seventh step is just normal successful transaction without any discount."
+		}
+	]
+}
