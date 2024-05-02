@@ -13,6 +13,8 @@ import com.example.bcpp.service.CompanyMerchantService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+
 import static com.example.bcpp.dto.CompanyMerchantDTO.convertToDto;
 
 @Service
@@ -25,9 +27,8 @@ public class CompanyMerchantServiceImpl implements CompanyMerchantService {
 
     @Override
     public CompanyMerchant getModel(Long companyId, Long merchantId) {
-        // it can be null
         return companyMerchantRepository.findByCompanyIdAndMerchantId(companyId, merchantId)
-                .orElseThrow(() -> new NotFoundException("CompanyMerchant associated with this company and category not found."));
+                .orElse(null);
     }
 
     @Override

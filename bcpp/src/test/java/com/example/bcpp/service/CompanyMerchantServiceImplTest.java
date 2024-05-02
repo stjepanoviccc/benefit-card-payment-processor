@@ -65,15 +65,13 @@ public class CompanyMerchantServiceImplTest {
     }
 
     @Test
-    void shouldThrowNotFoundException_whenGetModel_ifCompanyMerchantDoesNotExist() {
+    void shouldReturnNull_whenGetModel_ifCompanyMerchantDoesNotExist() {
         // Given: Mocking getModel when CompanyMerchant doesn't exist.
         when(companyMerchantRepository.findByCompanyIdAndMerchantId(anyLong(), anyLong())).thenReturn(Optional.empty());
 
-        NotFoundException exception = assertThrows(NotFoundException.class,() -> companyMerchantService.getModel(
-                companyMerchant2.getCompany().getId(), companyMerchant2.getMerchant().getId()
-        ));
+        CompanyMerchant result = companyMerchantService.getModel(companyMerchant2.getCompany().getId(), companyMerchant2.getMerchant().getId());
 
-        assertEquals("CompanyMerchant associated with this company and category not found.", exception.getMessage());
+        assertNull(result);
 
         verify(companyMerchantRepository).findByCompanyIdAndMerchantId(companyMerchant2.getCompany().getId(), companyMerchant2.getMerchant().getId());
         verifyNoMoreInteractions(companyMerchantRepository);
