@@ -25,7 +25,7 @@ To start this project you need to have installed next things:
 **IntelliJ IDEA**, **Java 17**, **PostgreSQL** database, **Postman** and **Docker**.
 
 ## API Documentation and Postman  
-Docs: https://documenter.getpostman.com/view/26096728/2sA3JDfjur  
+Docs: https://documenter.getpostman.com/view/26096728/2sA3JFBQbq  
 Collection and Enviroment: https://github.com/stjepanoviccc/benefit-card-payment-processor/tree/develop/bcpp/src/main/resources.   
 There is mini-documentation for using postman and how to set it up inside of the collection.  
 
@@ -55,7 +55,7 @@ For Error Handling I used SpringBoot’s global exception mechanism. I did setup
 
 ## Testing:  
 
-I've implemented over 30 unit tests across various services in this project.  
+I've implemented over 30 unit tests across all services in this project.  
 These unit tests are designed to ensure the functionality of individual components in isolation.  
 Mockito is used to mock dependencies, allowing us to isolate the units under test.
 
@@ -97,12 +97,16 @@ This docker-compose.yml file is used to define and manage the services required 
 This docker-compose.yml file simplifies the deployment and management of the bcpp application and its dependencies by defining them as services within a single configuration file.  
 
 **START APP**:  
-1. navigate to root folder
-2. use next command in terminal: **docker build . -t bcpp:v1** and wait until image is built up...
-3. use next command in terminal: **docker-compose up --build**
-4. open postman collection provided in src/main/resources and set up enviroment
-5. start sending requests from postman and responses will be created DTOs (you have documentation about postman)...
-6. (optional): to check database in docker use next command in docker terminal:  **psql -h localhost -p 5432 -U postgres bcpp**
+It's important to make sure you have existing database source in *application.properties* so .jar file can be builded (it's because of jpa) so it's easiest for you to just manually create database bcpp_db in pgAdmin/any other dashboard and you don't need to configure anything else but if you want you can connect to any database because it will be overwritten with docker-compose.yaml ...  
+1. clone project  
+2. mvn clean  
+3. mvn package  
+1. navigate to root folder  
+2. use next command in terminal: **docker build . -t bcpp_v1**  
+3. use next command in terminal: **docker-compose up --build**  
+4. open postman collection provided in src/main/resources and set up enviroment  
+5. start sending requests from postman and responses will be created DTOs (you have documentation about postman)...  
+6. (optional): to check database in docker use next command in docker terminal:  **psql -h localhost -p 5432 -U postgres bcpp**  
 
 ## Author
 
