@@ -99,7 +99,7 @@ This docker-compose.yml file simplifies the deployment and management of the bcp
 **START APP**:  
 1. navigate to root folder
 2. use next command in terminal: **docker build . -t bcpp:v1** and wait until image is built up...
-3. use next command in terminal: **docker-compose up**
+3. use next command in terminal: **docker-compose up --build**
 4. open postman collection provided in src/main/resources and set up enviroment
 5. start sending requests from postman and responses will be created DTOs (you have documentation about postman)...
 6. (optional): to check database in docker use next command in docker terminal:  **psql -h localhost -p 5432 -U postgres bcpp**
