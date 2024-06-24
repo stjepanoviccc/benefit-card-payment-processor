@@ -108,8 +108,6 @@ It's important to make sure you have existing database source in *application.pr
 5. start sending requests from postman and responses will be created DTOs (you have documentation about postman)...  
 6. (optional): to check database in docker use next command in docker terminal:  **psql -h localhost -p 5432 -U postgres bcpp**  
 
-## Author
-
-**Andrej Stjepanović**  
-Student at the **Faculty of Technical Sciences** in Novi Sad  
-Undergraduate of Software Engineering
+## Author  
+Andrej Stjepanović,  
+Software Developer
